@@ -1,0 +1,33 @@
+w,h,n,m=map(int,input().split())
+a=list(map(int,input().split()))
+b=list(map(int,input().split()))
+suma=set([])
+sumb=set([])
+sumc=set([])
+for i in range(n):
+    for j in range(i+1,n):
+        suma.add(abs(a[i]-a[j]))
+for i in range(m):
+    for j in range(i+1,m):
+        sumb.add(abs(b[i]-b[j]))
+commmon=0
+for q in sumb:
+    if q in suma:
+        sumc.add(q)
+        commmon+=1
+maxx=0
+for k in range(h+1):
+    count=0
+    sumk=set([])
+    if k in b:
+        continue
+    else:
+        for u in b:
+            diff=abs(k-u)
+            sumk.add(diff)
+    for d in sumk:
+        if (d in suma) and (d not in sumc):
+            count+=1
+    if count>maxx:
+        maxx=count
+print(maxx+commmon)
