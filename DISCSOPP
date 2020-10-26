@@ -1,0 +1,9 @@
+import math
+for _ in range(int(input())):
+    n=input()
+    l=len(n)
+    minn=math.inf
+    for i in range(len(n)):
+        num=int(n[0:i]+n[i+1:l])
+        minn=min(num,minn)
+    print(minn)    
