@@ -1,0 +1,37 @@
+def modulo(a,m):
+    q=m
+    x=1
+    y=0
+    if m==1:
+        return 0
+    else:
+        while a>1:
+            w=a//m
+            t=m
+            m=a%m
+            a=t
+            t=y
+            y=x-(w*y)
+            x=t
+        if x<=-1:
+            x+=q
+        return x
+mod=1000000007
+arr=[1]
+for i in range(1,pow(10,6)+7):
+    last=arr[-1]
+    gh=last*i%mod
+    arr.append(gh)
+def cmb(n,r):
+    a=(arr[n]*modulo(arr[r],mod)*modulo(arr[n-r],mod))%mod
+    return a
+for _ in range(int(input())):
+    n=int(input())
+    listt=list(map(int,input().split()))
+    d=listt.count(max(listt))
+    ans=0
+    if d%2==1:
+        ans=(pow(2,d,mod)*pow(2,n-d,mod))%mod
+    else:
+        ans=((pow(2,d,mod)-cmb(d,d//2))*pow(2,n-d,mod))%mod
+    print(ans)
