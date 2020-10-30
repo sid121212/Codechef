@@ -1,0 +1,55 @@
+#include <bits/stdc++.h>
+typedef long long int lli;
+#define mod 1000000007
+#define MOD 1003
+#define li long int
+using namespace std;
+
+
+int main(){
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    vector<int> power[20];
+
+    for (int i=1;i<20;i++) power->push_back(pow(2,i));
+    int t;
+    cin>>t;
+    while (t--){
+        int n;
+        cin>>n;
+        bool index;
+        index=binary_search(power->begin(),power->end(),n);
+        if (index){
+            cout<<-1<<'\n';
+            continue;
+        }
+        int c=1;
+        int with[]={2,3,1,5,4};
+        if (n>=5){
+            for (int i=0;i<min(5,n);i++){
+                cout<<with[i]<<" ";
+                c=6;
+            }
+        }
+        int carry=0;
+        for (int i=c;i<n+1;i++){
+            if (carry){
+                cout<<i<<" ";
+                cout<<carry<<" ";
+                carry=0;
+            }else{
+                bool truth;
+                truth=binary_search(power->begin(),power->end(),i);
+                if (truth){
+                    carry=i;
+                }else{
+                    cout<<i<<" ";
+                }
+            }
+
+        }
+        cout<<'\n';
+
+
+    }
+}
