@@ -1,0 +1,31 @@
+#include <bits/stdc++.h>
+using namespace std;
+int a[100005];
+int main()
+{
+	int t;
+	scanf("%d",&t);
+	while (t--)
+	{
+		int n,q,ans=0;
+		scanf("%d%d",&n,&q);
+		for (int i=1;i<=n;i++)
+		{
+			scanf("%d",&a[i]);
+			ans+=(a[i]!=a[i-1]);
+		}
+		while (q--)
+		{
+			int x,y;
+			scanf("%d%d",&x,&y);
+			ans-=(a[x]!=a[x-1]);
+			if (x!=n)
+			ans-=(a[x+1]!=a[x]);
+			a[x]=y;
+			ans+=(a[x]!=a[x-1]);
+			if (x!=n)
+			ans+=(a[x+1]!=a[x]);
+			printf("%d\n",ans);
+		}
+	}
+} 
