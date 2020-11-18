@@ -1,0 +1,17 @@
+import bisect
+from collections import Counter
+
+for _ in range(int(input())):
+    n=int(input())
+    b=list(map(int,input().split()))[::-1]
+    dic=Counter()
+    z=2
+    arr=[]
+    for i in b:
+        if dic[i]==0:
+            dic[i]=z
+            arr.append(z)
+            z+=1
+        else:
+            arr.append(dic[i])
+    print(*arr[::-1])
