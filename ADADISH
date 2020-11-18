@@ -1,0 +1,15 @@
+from itertools import combinations
+for _ in range(int(input())):
+    n = int(input())
+    s = list(map(int, input().split()))
+    summ=sum(s)
+    minn=1000
+    for i in range(n):
+        s1=list(combinations(s,i+1))
+        for j in s1:
+            s3=sum(j)
+            maxx=max(s3,summ-s3)
+            minn=min(minn,maxx)
+    print(minn)
+
+
