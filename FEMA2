@@ -1,0 +1,37 @@
+for _ in range(int(input())):
+    n,k=map(int,input().split())
+    a=input()
+    if n==1:
+        print(0)
+        continue
+    ir=0
+    mg=0
+    ans=0
+    while ir<n and mg<n:
+        if a[mg]=='M':
+            if a[ir]=='I':
+                maxx=max(ir,mg)
+                minn=min(ir,mg)
+                sheet=a[minn:maxx].count(':')
+                p=k+1-abs(ir-mg)-sheet
+                if p>0:
+                    ans+=1
+                    ir+=1
+                    mg+=1
+                    sheet=0
+                elif p<=0:
+                    if ir>mg:
+                        mg+=1
+                    else:
+                        ir+=1
+            elif a[ir]=='X':
+                mg=ir+1
+                ir+=1
+            else:
+                ir+=1
+        elif a[mg]=='X':
+            ir=mg+1
+            mg+=1
+        else:
+            mg+=1
+    print(ans)
