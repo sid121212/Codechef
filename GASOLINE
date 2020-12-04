@@ -1,0 +1,22 @@
+for _ in range(int(input())):
+    n=int(input())
+    f=list(map(int,input().split()))
+    c=list(map(int,input().split()))
+    dic=list(zip(c,f))
+    dic.sort(key=lambda x:x[0])
+    gas=0
+    j=0
+    coin=0
+    while gas<n:
+        if dic[j][1]==0:
+            j+=1
+            continue
+        if gas+dic[j][1]>n:
+            b=n-gas
+            gas=n
+        else:
+            gas+=dic[j][1]
+            b=dic[j][1]
+        coin+=b*dic[j][0]
+        j+=1
+    print(coin)
