@@ -1,0 +1,9 @@
+for _ in range(int(input())):
+    n,k=map(int,input().split())
+    a=list(map(int,input().split()))
+    tot=sum(a)//k
+    rem=sum(a)%k
+    if rem>=min(a):
+        print(-1)
+    else:
+        print(tot)
