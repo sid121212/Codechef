@@ -1,0 +1,11 @@
+import math
+n=int(input())
+a=list(map(int,input().split()))
+maxx=max(a)
+summ=0
+g=maxx-a[0]
+for i in a:
+    l=maxx-i
+    summ+=l
+    g=math.gcd(g,l)
+print(summ//g,g)
